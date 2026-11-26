@@ -21,6 +21,10 @@
     max-width: 520px;
     padding: 48px 16px;
   }
+  /* 大きい画面では説明が1行に収まる幅に */
+  @media (min-width: 900px) {
+    main { max-width: 860px; }
+  }
   h1 {
     font-size: 1.8rem;
     font-weight: 700;
@@ -36,16 +40,35 @@
     margin: 0 0 12px;
   }
   h2.section { margin-top: 48px; }
+
+  /* サービス名と説明を横並びにし、説明が名前の下に回り込まないようにする */
   p {
+    display: flex;
+    gap: 0.5em;
     margin: 0 0 18px;
     font-size: 1rem;
     line-height: 1.6;
     color: #666;
   }
-  .service { margin-bottom: 16px; }
-  .service > p { margin-bottom: 4px; }
+  p > a {
+    flex: 0 0 auto;
+    max-width: 55%;
+    align-self: flex-start;
+  }
+  /* 「-」を独立させ、折り返した行を説明文の頭にそろえる */
+  p > span {
+    flex: 1 1 auto;
+    min-width: 0;
+    display: flex;
+    gap: 0.5em;
+  }
+  p > span::before {
+    content: "-";
+    flex: 0 0 auto;
+  }
 
-  /* 付属サービス：字下げのみ */
+  .service { margin-bottom: 22px; }
+  .service > p { margin-bottom: 4px; }
   .sub {
     margin: 0 0 4px;
     padding-left: 1.5em;
@@ -65,7 +88,8 @@
     p { color: #999; }
     a { color: #f0f0f0; border-color: #555; }
     a:hover { border-color: #f0f0f0; }
-    h2 { color: #666; }  }
+    h2 { color: #666; }
+  }
 </style>
 </head>
 <body>
@@ -74,22 +98,22 @@
   <h2>Services</h2>
 
   <div class="service">
-    <p><a href="https://txtlive.net/">TxT Live</a> - 執筆過程をライブ配信・記録・公開できる物書きさん向けサービス</p>
-    <p class="sub"><a href="https://txtgif.txtlive.net/">テキストをGIFにするツール</a> - テキストを動くGIF画像にするツール</p>
-    <p class="sub"><a href="https://aiueo-slot.txtlive.net/">あいうえおスロット</a> - 好きな文字をそろえるスロット</p>
+    <p><a href="https://txtlive.net/">TxT Live</a><span>執筆過程をライブ配信・記録・公開できる物書きさん向けサービス</span></p>
+    <p class="sub"><a href="https://txtgif.txtlive.net/">テキストをGIFにするツール</a><span>テキストを動くGIF画像にするツール</span></p>
+    <p class="sub"><a href="https://aiueo-slot.txtlive.net/">あいうえおスロット</a><span>好きな文字をそろえるスロット</span></p>
   </div>
 
   <div class="service">
-    <p><a href="https://risunoko.com/">リリースノートはココ(α)</a> - プロダクトのリリースノートやお知らせを管理・公開できるサービス</p>
+    <p><a href="https://risunoko.com/">リリースノートはココ(α)</a><span>プロダクトのリリースノートやお知らせを管理・公開できるサービス</span></p>
   </div>
 
   <div class="service">
-    <p><a href="https://naname210.github.io/abyssal_garden_ring_race/">Abyssal Garden: Ring Race</a> - An underwater time trial in your browser</p>
+    <p><a href="https://naname210.github.io/abyssal-garden-ring-race/">Abyssal Garden: Ring Race</a><span>An underwater time trial in your browser</span></p>
   </div>
 
   <h2 class="section">Social</h2>
 
-  <p><a href="https://x.com/naname210">X</a> - @naname210</p>
+  <p><a href="https://x.com/naname210">X</a><span>@naname210</span></p>
 </main>
 </body>
 </html>
